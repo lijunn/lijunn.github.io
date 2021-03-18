@@ -99,11 +99,11 @@
 <body>
 <!--更改为你女朋友的头像-->
 <div class="cs">
-    <img src="https://lijun-oss.oss-cn-shanghai.aliyuncs.com/image/mmexport1613139741500.jpg" id="logo">
+<!--    <img src="https://lijun-oss.oss-cn-shanghai.aliyuncs.com/image/mmexport1613139741500.jpg" id="logo">-->
 </div>
 <canvas class="canvas" width="1820" height="905"></canvas>
 <p class="text" style="color: #ed3073;">
-    We fell in love
+<!--    We fell in love-->
     <br/>
     <span id="span_dt_dt"></span>
 </p>
@@ -126,7 +126,7 @@
         span_dt_dt.innerHTML = daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒";
     }
 
-    
+
 </script>
 <script>
     var S = {
@@ -134,7 +134,7 @@
             S.Drawing.init('.canvas');
             document.body.classList.add('body--ready');
 			//想说的话
-            S.UI.simulate("素珍|你愿意|嫁给我吗");
+            S.UI.simulate("#time|#countdown 3|素珍|I|LOVE|YOU|I LOVE YOU");
             S.Drawing.loop(function () {
                 S.Shape.render();
             });
@@ -275,7 +275,10 @@
                         value = Math.min(value, maxShapeSize);
                         S.Shape.switchShape(S.ShapeBuilder.circle(value));
                         break;
-
+                    case 'letter':
+                        value = parseInt(value) || maxShapeSize;
+                        S.Shape.switchShape(S.ShapeBuilder.letter(value));
+                        break
                     case 'time':
                         var t = formatTime(new Date());
 
@@ -295,7 +298,7 @@
                     default:
                         S.Shape.switchShape(S.ShapeBuilder.letter(current[0] === cmd ? 'HacPai' : current));
                 }
-            }, 2000, sequence.length);
+            }, 2400, sequence.length);
         }
 
         return {
@@ -665,9 +668,13 @@
             }
         };
     }());
-    
 
-    S.init();
+    // for (var i = 0; i < 10; i++) {
+    //     setTimeout(() => {
+            S.init();
+        // }, 2000 * i)
+    // }
+
    
 </script>
 <audio autoplay="autoplay" src="http://www.170mv.com/kw/other.web.ri01.sycdn.kuwo.cn/resource/n2/5/28/1090321156.mp3" loop="loop">
